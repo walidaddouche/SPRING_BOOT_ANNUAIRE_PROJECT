@@ -24,6 +24,8 @@ public class GroupTable {
     @OneToMany(cascade = { CascadeType.ALL }, mappedBy = "group")
     private Set<Person> persons = new HashSet<>();
 
+
+    @Transient
     private long PersonCount;
 
 

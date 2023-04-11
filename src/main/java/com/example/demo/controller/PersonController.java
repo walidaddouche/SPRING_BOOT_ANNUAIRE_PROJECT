@@ -19,11 +19,11 @@ public class PersonController {
     @Autowired
     private PersonRepository personRepository;
 
-    @GetMapping("/person/{id}")
+    @GetMapping("/{id}")
     public String showPersonDetails(@PathVariable("id") Long id, Model model) {
         Person person = personRepository.findById(id).orElse(null);
-        model.addAttribute("persons", Collections.singletonList(person));
-        return "persons";
+        model.addAttribute("persons", person);
+        return "personDetail";
     }
 
     @GetMapping("/all")

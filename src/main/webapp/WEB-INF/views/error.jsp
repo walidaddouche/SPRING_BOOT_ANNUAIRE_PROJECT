@@ -11,6 +11,7 @@
     <title>Error Page</title>
 </head>
 <body>
+<h1> Page d'erreur chemin inexistant </h1>
 
 </body>
 </html>

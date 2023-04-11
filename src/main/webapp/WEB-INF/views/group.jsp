@@ -20,12 +20,23 @@
     </thead>
     <tbody>
     <c:forEach var="group" items="${groups}">
-        <tr>
+        <tr id="${group.id}">
             <td>${group.id}</td>
             <td>${group.name}</td>
             <td>${personRepository.countPersonsByGroup(group)}</td>
         </tr>
     </c:forEach>
+
+
+    <script>
+        var table = document.querySelector('table');
+        table.addEventListener('click', function(event) {
+            var id = event.target.parentNode.id;
+            if (id) {
+                window.location.href = '/groups/' + id;
+            }
+        });
+    </script>
 
     </tbody>
 </table>

@@ -22,9 +22,11 @@ public class PersonController {
     @GetMapping("/{id}")
     public String showPersonDetails(@PathVariable("id") Long id, Model model) {
         Person person = personRepository.findById(id).orElse(null);
-        model.addAttribute("persons", person);
+        model.addAttribute("person", person);
         return "personDetail";
+
     }
+
 
     @GetMapping("/all")
     public String getAllPersons(Model model) {

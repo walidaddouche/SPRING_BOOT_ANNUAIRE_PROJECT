@@ -1,6 +1,7 @@
 package com.example.demo;
 
-
+import com.example.demo.model.GenearatorUtility;
+import com.example.demo.model.Generator;
 import com.example.demo.model.GroupTable;
 import com.example.demo.model.Person;
 import com.example.demo.repository.GroupTableRepository;
@@ -30,7 +31,7 @@ public class DemoApplication {
 
         for (int i = 0; i < 200; i++) {
             GroupTable group = new GroupTable();
-            group.setName(faker.company().name());
+            group.setName(faker.team().name());
             groupRepository.save(group);
             groups.add(group);
 
@@ -49,12 +50,6 @@ public class DemoApplication {
             person.setGroup(groups.get(faker.random().nextInt(groups.size())));
             personRepository.save(person);
         }
-
-
-
-
-
-
 
 
 

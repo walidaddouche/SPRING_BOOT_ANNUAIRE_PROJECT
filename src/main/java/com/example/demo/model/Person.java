@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,7 +14,6 @@ public class Person {
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column()
     private String firstName;
     @Column()
@@ -30,10 +30,11 @@ public class Person {
     @Column(nullable = false)
     private String password;
 
-
-    @ManyToOne
-    @JoinColumn(name = "group_id")
+    @ManyToOne()
+    @JoinColumn(name = "group_ref")
     private GroupTable group;
+
+
 
 
 

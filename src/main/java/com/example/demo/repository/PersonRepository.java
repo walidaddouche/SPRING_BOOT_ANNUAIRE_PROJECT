@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.model.GroupTable;
 import com.example.demo.model.Person;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -21,5 +22,10 @@ public interface PersonRepository extends CrudRepository<Person,Long> {
     Optional<Person> findByEmail(String email);
 
     void deleteByEmail(String email);
+
+    long countPersonsByGroup(GroupTable group);
+
+    List<Person> findByGroup(GroupTable groupTable);
+
 
 }

@@ -17,6 +17,7 @@
         <th>Email</th>
         <th>Website</th>
         <th>Date of Birth</th>
+        <th> Group Id</th>
     </tr>
     </thead>
     <tbody>
@@ -28,6 +29,8 @@
             <td>${person.email}</td>
             <td>${person.website}</td>
             <td>${person.dateOfBirth}</td>
+            <td> ${person.group.id}</td>
+
         </tr>
     </c:forEach>
     </tbody>

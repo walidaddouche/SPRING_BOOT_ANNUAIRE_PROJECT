@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 @Controller
 @RequestMapping("/persons")
@@ -22,21 +23,22 @@ public class PersonController {
     public String showPersonDetails(@PathVariable("id") Long id, Model model) {
         Person person = personRepository.findById(id).orElse(null);
         model.addAttribute("persons", Collections.singletonList(person));
-        System.out.println("By here ");
         return "persons";
     }
+
+    @GetMapping("/all")
+    public String getAllPersons(Model model) {
+        Iterable<Person> persons = personRepository.findAll();
+        model.addAttribute("persons", persons);
+        return "persons";
+    }
+
 
 
     @PostMapping("/")
     public Person createPerson(@RequestBody Person person) {
         return personRepository.save(person);
     }
-    @GetMapping("/")
-    public String  HomePage(){
-        return "index";
-    }
-
-
 
     @PutMapping("/{id}")
     public Person updatePerson(@PathVariable Long id, @RequestBody Person person) {

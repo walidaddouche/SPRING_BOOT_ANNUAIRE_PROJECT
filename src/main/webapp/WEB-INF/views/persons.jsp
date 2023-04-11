@@ -3,35 +3,8 @@
 <html>
 <head>
     <title>Person Details</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
+    <style><%@include file="../css/persons.css"%></style>
 
-        th, td {
-            text-align: left;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        tr:nth-child(even) {background-color: #f2f2f2;}
-
-        tr:hover {background-color: #ddd;}
-
-        td:first-child {
-            font-weight: bold;
-        }
-
-        td span {
-            font-style: italic;
-        }
-
-    </style>
 </head>
 <body>
 <h1>Person Details</h1>

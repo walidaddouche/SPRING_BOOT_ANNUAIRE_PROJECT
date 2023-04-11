@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+
 @RequestMapping("/groups")
 
 public class GroupController {
@@ -19,7 +20,6 @@ public class GroupController {
     public String showAllGroups(Model model) {
         //model.addAttribute("groups", groupRepository.findAll());
         System.out.println(groupRepository.findAll());
-        System.out.println("HERE");
         return "groups";
     }
 }

@@ -4,9 +4,10 @@ package com.example.demo.controller;
 import com.example.demo.model.Person;
 import com.example.demo.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping("/persons")
 public class PersonController {
 
@@ -22,6 +23,11 @@ public class PersonController {
     public Person createPerson(@RequestBody Person person) {
         return personRepository.save(person);
     }
+    @GetMapping("/")
+    public String  HomePage(){
+        return "index";
+    }
+
 
 
     @PutMapping("/{id}")
@@ -38,6 +44,8 @@ public class PersonController {
     public void deletePerson(@PathVariable Long id) {
         personRepository.deleteById(id);
     }
+
+
 
 
 

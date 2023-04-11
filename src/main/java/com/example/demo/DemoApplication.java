@@ -18,8 +18,6 @@ public class DemoApplication {
         myPerson.setEmail("walid.ad93@gmail.col");
         myPerson.setPassword("walid.ad93@gmail.col");
 
-
-
         personRepository.save(myPerson);
     }
 

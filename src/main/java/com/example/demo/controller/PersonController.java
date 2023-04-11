@@ -23,6 +23,7 @@ public class PersonController {
         return personRepository.save(person);
     }
 
+
     @PutMapping("/{id}")
     public Person updatePerson(@PathVariable Long id, @RequestBody Person person) {
         if (personRepository.existsById(id)) {
@@ -38,8 +39,6 @@ public class PersonController {
         personRepository.deleteById(id);
     }
 
-    @GetMapping("/index")
-    public String myJspPage() {
-        return "index";
-    }
+
+
 }

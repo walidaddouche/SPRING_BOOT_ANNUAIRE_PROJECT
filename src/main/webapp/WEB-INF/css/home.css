@@ -5,7 +5,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: green; /* Updated background color */
     color: #fff;
     padding: 10px;
     display: flex;
@@ -27,6 +27,15 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li:not(:last-child) {
+    margin-right: 20px;
+}
+
+nav ul li:first-child a {
+    margin-left: 20px; /* Added margin to move "Annuaire" to the right */
 }
 
 main {
@@ -35,7 +44,7 @@ main {
 }
 
 footer {
-    background-color: #333;
+    background-color: green; /* Updated background color */
     color: #fff;
     text-align: center;
     padding: 10px;
@@ -44,7 +53,7 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
 p {
     display: block;
 }
-

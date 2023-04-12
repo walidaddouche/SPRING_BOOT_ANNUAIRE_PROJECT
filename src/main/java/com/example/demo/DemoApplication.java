@@ -1,16 +1,21 @@
 package com.example.demo;
 
+import com.example.demo.model.EmailSenderService;
 import com.example.demo.model.GroupTable;
 import com.example.demo.model.Person;
 import com.example.demo.repository.GroupTableRepository;
 import com.example.demo.repository.PersonRepository;
 import com.github.javafaker.Faker;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.event.EventListener;
 
+import javax.mail.MessagingException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +23,9 @@ import java.util.List;
 
 @SpringBootApplication
 public class DemoApplication {
+
+//    @Autowired
+//    private EmailSenderService senderService;
 
 
     public static void main(String[] args) throws ParseException {
@@ -62,7 +70,18 @@ public class DemoApplication {
             System.out.println(person.getEmail());
             System.out.println(person.getPassword());
 
+
+
         };
+
     }
+
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void triggerMail() throws MessagingException {
+//        senderService.sendSimpleEmail("zidanifahd@gmail.com",
+//                "This is email body",
+//                "This is email subject");
+//
+//    }
 }
 

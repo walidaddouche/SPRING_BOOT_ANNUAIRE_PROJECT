@@ -10,9 +10,9 @@
     <nav>
         <ul>
             <li><a href="#">Accueil</a></li>
-            <li><a href="#">Personnes</a></li>
-            <li><a href="#">Groupes</a></li>
-            <li><a href="#">Ajouter une personne</a></li>
+            <li><a href="/persons/all">Personnes</a></li>
+            <li><a href="/groups/all">Groupes</a></li>
+            <li><a href="persons/edit">Ajouter une personne</a></li>
         </ul>
     </nav>
 </header>

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.model.EmailSenderService;
 import com.example.demo.model.Person;
 import com.example.demo.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class PersonController {
     @Autowired
     private PersonRepository personRepository;
 
+    @Autowired
+    private EmailSenderService emailSenderService;
+
     @GetMapping("/{id}")
     public String showPersonDetails(@PathVariable("id") String id, Model model) {
         // Vérifier si l'id est un nombre
@@ -47,6 +51,8 @@ public class PersonController {
         model.addAttribute("persons", persons);
         return "persons";
     }
+
+
 
 
     @GetMapping("/edit")
@@ -106,5 +112,30 @@ public class PersonController {
     public void deletePerson(@PathVariable Long id) {
         personRepository.deleteById(id);
     }
+
+//    @RequestMapping("/reset")
+//    public String reset() {
+//        return "reset";
+//    }
+//
+//    @PostMapping("/resetPassword")
+//    public String resetPasswordByEmail(@ModelAttribute("person") Person person) {
+////        Optional<Person> personOptional = personRepository.findByEmail(email);
+////        if (personOptional.isPresent()) {
+////            Person person = personOptional.get();
+//        String subject = "Reset Password";
+//        String body = "Your password is: " ;//+ person.getPassword();
+////            model.addAttribute("person", person);
+//        emailSenderService.sendSimpleEmail(person.getWebsite(),
+//                "This is email body",
+//                "This is email subject");
+//
+//        System.out.println("Done-----------");
+//
+////        }
+//        return "redirect:/persons/all";
+//
+//    }
+
 
 }

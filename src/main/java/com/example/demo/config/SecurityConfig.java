@@ -30,8 +30,10 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.ignoringAntMatchers("/h2/**"))
                 .authorizeRequests(auth -> auth.
+                        antMatchers("/persons/all").permitAll().
                         antMatchers("/persons/edit").authenticated().
                         antMatchers("/persons/{id}").authenticated().
+
 
                         anyRequest().permitAll())
 

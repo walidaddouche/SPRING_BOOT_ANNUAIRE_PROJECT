@@ -2,7 +2,9 @@ package com.example.demo.controller;
 
 
 import com.example.demo.model.EmailSenderService;
+import com.example.demo.model.Person;
 import com.example.demo.model.ResetPasswordForm;
+import com.example.demo.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +12,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Optional;
+
 @Controller
 public class ResetPasswordController {
     @Autowired
     private EmailSenderService emailSenderService;
+
+    @Autowired
+    private PersonRepository personRepository;
 
     @RequestMapping(value = "/reset-password", method = RequestMethod.GET)
     public String resetPassword(Model model) {
@@ -23,22 +30,16 @@ public class ResetPasswordController {
 
     @RequestMapping(value = "/reset-password", method = RequestMethod.POST)
     public String resetPassword(@ModelAttribute("resetPasswordForm") ResetPasswordForm resetPasswordForm, Model model) {
-        // Check if the passwords match
-        if (!resetPasswordForm.getPassword().equals(resetPasswordForm.getConfirmPassword())) {
-            model.addAttribute("errorMessage", "Passwords do not match");
-            return "reset-password";
-        }
 
-        // Implement password reset logic here
-        // ...
 
         // Send email
         String toEmail = resetPasswordForm.getEmail();
-        String subject = "Password Reset Confirmation";
-        String body = "Your password has been reset successfully.";
-        emailSenderService.sendSimpleEmail(toEmail, subject, body);
-
-        model.addAttribute("message", "Password reset successful. Check your email for confirmation.");
+        Optional<Person> personOptional = personRepository.findByEmail(resetPasswordForm.getEmail());
+        if (personOptional.isPresent()) {
+            Person person = personOptional.get();
+            String subject = "Reset Password";
+            String body = "Your password is: " + person.getPassword();
+            emailSenderService.sendSimpleEmail(person.getEmail(), body, subject);}
         return "reset-password";
     }
 

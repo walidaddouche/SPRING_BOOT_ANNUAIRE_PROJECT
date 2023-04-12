@@ -64,11 +64,6 @@
         <label for="email">Email:</label>
         <form:input type="text" path="email" id="email" />
 
-        <label for="password">New Password:</label>
-        <form:input type="password" path="password" id="password" />
-
-        <label for="confirmPassword">Confirm Password:</label>
-        <form:input type="password" path="confirmPassword" id="confirmPassword" />
 
         <div class="error">${errorMessage}</div>
 

@@ -30,10 +30,10 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.ignoringAntMatchers("/h2/**"))
                 .authorizeRequests(auth -> auth.
-                        mvcMatchers("/persons/all").permitAll().
-                        mvcMatchers("/persons/{id}").permitAll().
-                        mvcMatchers("/").permitAll().
-                        anyRequest().authenticated()).userDetailsService(jpaUserDetailsService)
+                        antMatchers("/persons/edit").authenticated().
+                        anyRequest().permitAll())
+
+                .userDetailsService(jpaUserDetailsService)
 
                 .headers(headers -> headers.frameOptions().sameOrigin())
                 .httpBasic(Customizer.withDefaults())

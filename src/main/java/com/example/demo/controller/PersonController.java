@@ -4,13 +4,21 @@ package com.example.demo.controller;
 import com.example.demo.model.Person;
 import com.example.demo.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @Controller
 @RequestMapping("/persons")
@@ -24,7 +32,6 @@ public class PersonController {
         Person person = personRepository.findById(id).orElse(null);
         model.addAttribute("person", person);
         return "personDetail";
-
     }
 
 
@@ -34,6 +41,43 @@ public class PersonController {
         model.addAttribute("persons", persons);
         return "persons";
     }
+
+
+    @GetMapping("/edit")
+    public String edit(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        Optional<Person> personOptional = personRepository.findByEmail(userDetails.getUsername());
+        if (personOptional.isPresent()) {
+
+            Person person = personOptional.get();
+            model.addAttribute("person", person);
+            return "personEdit";
+        } else {
+            System.out.println("redirection");
+            return "redirect:/error";
+        }
+    }
+
+
+    @PostMapping("/save")
+    public String savePerson(@ModelAttribute("person") Person person) throws ParseException {
+        Optional<Person> personOnDb = personRepository.findById(person.getId());
+        Person personOnBrowser = personOnDb.get();
+
+
+
+        System.out.println("THISSSSSSSS");
+
+
+        personOnBrowser.setFirstName(person.getFirstName());
+        personOnBrowser.setLastName(person.getLastName());
+        personOnBrowser.setWebsite(person.getWebsite());
+
+
+
+        personRepository.save(personOnBrowser);
+        return "redirect:/persons/all";
+    }
+
 
 
 
@@ -56,9 +100,5 @@ public class PersonController {
     public void deletePerson(@PathVariable Long id) {
         personRepository.deleteById(id);
     }
-
-
-
-
 
 }

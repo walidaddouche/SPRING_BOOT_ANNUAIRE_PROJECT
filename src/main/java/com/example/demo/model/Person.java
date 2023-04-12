@@ -34,9 +34,17 @@ public class Person {
     @JoinColumn(name = "group_ref")
     private GroupTable group;
 
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", website='" + website + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", password='" + password + '\'' +
+                ", group=" + group +
+                '}';
+    }
 }

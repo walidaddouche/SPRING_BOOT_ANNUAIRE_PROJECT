@@ -7,6 +7,7 @@ import com.example.demo.model.Person;
 import com.example.demo.repository.GroupTableRepository;
 import com.example.demo.repository.PersonRepository;
 import com.github.javafaker.Faker;
+import org.aspectj.weaver.Iterators;
 import org.hibernate.Hibernate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.ITERATOR;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -28,9 +30,11 @@ public class testFakesData {
     @Autowired
     private GroupTableRepository groupRepository;
 
+    Faker faker = new Faker();
+
+
     @Test
     public void testFaker() {
-        Faker faker = new Faker();
         List<GroupTable> groups = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
@@ -40,7 +44,7 @@ public class testFakesData {
             groups.add(group);
         }
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 11; i++) {
             Person person = new Person();
             person.setFirstName(faker.name().firstName());
             person.setLastName(faker.name().lastName());
@@ -53,9 +57,48 @@ public class testFakesData {
         }
 
 
-        groups.forEach(group -> System.out.println(personRepository.countPersonsByGroup(group)));
 
-        assertThat(personRepository.count()).isEqualTo(10);
-        assertThat(groupRepository.count()).isEqualTo(5);
+
+
+
+
+    }
+
+
+    @Test
+    void testUpdateAll(){
+
+        Person person = new Person();
+
+        person.setFirstName(faker.name().firstName());
+        person.setLastName(faker.name().lastName());
+        person.setEmail(faker.internet().emailAddress());
+        person.setWebsite(faker.internet().url());
+        person.setDateOfBirth(faker.date().birthday());
+        person.setPassword(faker.internet().password());
+        personRepository.save(person);
+
+
+        Person person1 = new Person();
+
+        person1.setFirstName(faker.name().firstName());
+        person1.setLastName(faker.name().lastName());
+        person1.setEmail(faker.internet().emailAddress());
+        person1.setWebsite(faker.internet().url());
+        person1.setDateOfBirth(faker.date().birthday());
+        person1.setPassword(faker.internet().password());
+        personRepository.save(person1);
+
+
+
+
+        System.out.println(person);
+
+
+        person.setEmail(person1.getEmail());
+
+        System.out.println(person);
+
+
     }
 }

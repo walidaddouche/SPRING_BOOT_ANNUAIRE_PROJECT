@@ -61,3 +61,22 @@ table td:hover {
 .highlight {
     background-color: #ddd;
 }
+
+/* Style for search bar container */
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Style for search bar */
+#search-bar {
+    width: 10cm;
+    height: 3cm;
+    border: 10px solid grey;
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px ;
+}
+
+

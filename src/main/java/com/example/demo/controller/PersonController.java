@@ -40,9 +40,20 @@ public class PersonController {
 
 
     @GetMapping("/all")
-    public String getAllPersons(Model model) {
-        Iterable<Person> persons = personRepository.findAll();
-        model.addAttribute("persons", persons);
+    public String getAllPersons(@RequestParam(name = "name", required = false) String name, Model model) {
+        if (name != null && !name.trim().isEmpty()) {
+            Optional<Person> persons;
+            persons = personRepository.findByFirstNameContainingIgnoreCase(name.trim());
+            model.addAttribute("persons", persons);
+
+        } else {
+            Iterable<Person> persona;
+
+
+            persona = personRepository.findAll();
+            model.addAttribute("persons", persona);
+
+        }
         return "persons";
     }
 

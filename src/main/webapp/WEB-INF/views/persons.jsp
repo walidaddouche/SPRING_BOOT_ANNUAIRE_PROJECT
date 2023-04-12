@@ -7,11 +7,34 @@
     <%@include file="navbar.jsp" %>
 
 
-
+    <script>
+        function search() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchBar");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("personsTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body>
+
+<div class="search-bar-container">
+<input type="text" id="searchBar" onkeyup="search()" placeholder="Search by first name...">
+</div>
 <h1> Persons </h1>
-<table>
+<table id="personsTable">
     <thead>
     <tr>
         <th>First Name</th>

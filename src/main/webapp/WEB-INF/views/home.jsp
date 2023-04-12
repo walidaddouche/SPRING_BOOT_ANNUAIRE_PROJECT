@@ -9,10 +9,11 @@
     <h1>Annuaire</h1>
     <nav>
         <ul>
-            <li><a href="#">Accueil</a></li>
             <li><a href="/persons/all">Personnes</a></li>
             <li><a href="/groups/all">Groupes</a></li>
-            <li><a href="persons/edit">Ajouter une personne</a></li>
+            <li><a href="/persons/edit">Editer une personne</a></li>
+            <li><a href="/reset-password">Recuperer mot de pass</a></li>
+
         </ul>
     </nav>
 </header>

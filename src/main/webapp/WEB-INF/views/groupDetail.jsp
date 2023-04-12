@@ -5,6 +5,7 @@
 <head>
     <title>Group Details</title>
     <style><%@include file="../css/groupes.css"%></style>
+    <%@include file="navbar.jsp" %>
 </head>
 <body>
 <h1>Group Details</h1>

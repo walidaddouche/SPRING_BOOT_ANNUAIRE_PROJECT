@@ -29,7 +29,7 @@ public class ResetPasswordController {
     }
 
     @RequestMapping(value = "/reset-password", method = RequestMethod.POST)
-    public String resetPassword(@ModelAttribute("resetPasswordForm") ResetPasswordForm resetPasswordForm, Model model) {
+    public void resetPassword(@ModelAttribute("resetPasswordForm") ResetPasswordForm resetPasswordForm, Model model) {
 
 
         // Send email
@@ -39,8 +39,11 @@ public class ResetPasswordController {
             Person person = personOptional.get();
             String subject = "Reset Password";
             String body = "Your password is: " + person.getPassword();
-            emailSenderService.sendSimpleEmail(person.getEmail(), subject,body);}
-        return "reset-password";
+            emailSenderService.sendSimpleEmail(person.getEmail(), subject,body);
+            model.addAttribute("successMessage", "Un Email contenant votre mot de passe vous a été envoyé");
+        }
+        else {
+            model.addAttribute("errorMessage", "Aucun utilisateur trouvé avec cet email");        }
     }
 
 }

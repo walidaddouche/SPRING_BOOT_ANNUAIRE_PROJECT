@@ -7,9 +7,11 @@
 <h1>Edit Person</h1>
 <style>
     <%@include file="../css/personEdit.css" %>
+    <%@include file="navbar.jsp" %>
+
 </style>
 
-<form:form method="POST" modelAttribute="person" action="/persons/save">
+<form:form method="POST" modelAttribute="person" action="edit">
     <table>
         <tr>
             <td><form:label path="id">id</form:label></td>
@@ -29,11 +31,21 @@
         </tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="Save"/>
+                <input type="submit" value="Save" onsubmit="showSuccessMessage()"/>
+                <div class="success">${successMessage}</div>
+
             </td>
         </tr>
     </table>
 </form:form>
+
+<script>
+    function showSuccessMessage() {
+        let messageDiv = document.getElementsByClassName("successMessage");
+        messageDiv.innerHTML = "Vos informations ont bien été modifiées";
+        messageDiv.style.display = "block";
+    }
+</script>
 
 
 </body>

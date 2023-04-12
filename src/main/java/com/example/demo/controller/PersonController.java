@@ -5,20 +5,14 @@ import com.example.demo.model.EmailSenderService;
 import com.example.demo.model.Person;
 import com.example.demo.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Controller
@@ -55,6 +49,25 @@ public class PersonController {
 
 
 
+    @PostMapping("/edit")
+    public String savePerson(@ModelAttribute("person") Person person, Model model, HttpServletRequest request) {
+        Optional<Person> personOnDb = personRepository.findById(person.getId());
+        Person personOnBrowser = personOnDb.get();
+
+
+        personOnBrowser.setFirstName(person.getFirstName());
+        personOnBrowser.setLastName(person.getLastName());
+        personOnBrowser.setWebsite(person.getWebsite());
+
+        personRepository.save(personOnBrowser);
+
+        return "redirect:/persons/all";
+
+
+
+    }
+
+
     @GetMapping("/edit")
     public String edit(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         Optional<Person> personOptional = personRepository.findByEmail(userDetails.getUsername());
@@ -67,27 +80,6 @@ public class PersonController {
             System.out.println("redirection");
             return "redirect:/error";
         }
-    }
-
-
-    @PostMapping("/save")
-    public String savePerson(@ModelAttribute("person") Person person) throws ParseException {
-        Optional<Person> personOnDb = personRepository.findById(person.getId());
-        Person personOnBrowser = personOnDb.get();
-
-
-
-        System.out.println("THISSSSSSSS");
-
-
-        personOnBrowser.setFirstName(person.getFirstName());
-        personOnBrowser.setLastName(person.getLastName());
-        personOnBrowser.setWebsite(person.getWebsite());
-
-
-
-        personRepository.save(personOnBrowser);
-        return "redirect:/persons/all";
     }
 
 

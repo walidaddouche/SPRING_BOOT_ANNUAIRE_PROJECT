@@ -3,6 +3,8 @@
 <head>
     <title>Person Details</title>
     <style><%@include file="../css/persons.css"%></style>
+    <%@include file="navbar.jsp" %>
+
 
 </head>
 <body>

@@ -55,6 +55,10 @@
         .error {
             color: red;
         }
+        .success {
+            color: green;
+        }
+
     </style>
 </head>
 <body>
@@ -66,6 +70,8 @@
 
 
         <div class="error">${errorMessage}</div>
+
+        <div class="success">${successMessage}</div>
 
         <button type="submit">Submit</button>
     </form:form>

@@ -39,7 +39,7 @@ public class ResetPasswordController {
             Person person = personOptional.get();
             String subject = "Reset Password";
             String body = "Your password is: " + person.getPassword();
-            emailSenderService.sendSimpleEmail(person.getEmail(), body, subject);}
+            emailSenderService.sendSimpleEmail(person.getEmail(), subject,body);}
         return "reset-password";
     }
 

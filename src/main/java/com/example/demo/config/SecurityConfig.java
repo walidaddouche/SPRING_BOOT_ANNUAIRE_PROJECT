@@ -31,6 +31,8 @@ public class SecurityConfig {
         return http.csrf(csrf -> csrf.ignoringAntMatchers("/h2/**"))
                 .authorizeRequests(auth -> auth.
                         antMatchers("/persons/edit").authenticated().
+                        antMatchers("/persons/{id}").authenticated().
+
                         anyRequest().permitAll())
 
                 .userDetailsService(jpaUserDetailsService)

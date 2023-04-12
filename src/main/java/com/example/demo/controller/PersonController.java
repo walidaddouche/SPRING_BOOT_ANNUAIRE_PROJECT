@@ -28,11 +28,17 @@ public class PersonController {
     private PersonRepository personRepository;
 
     @GetMapping("/{id}")
-    public String showPersonDetails(@PathVariable("id") Long id, Model model) {
-        Person person = personRepository.findById(id).orElse(null);
+    public String showPersonDetails(@PathVariable("id") String id, Model model) {
+        // Vérifier si l'id est un nombre
+        if(!id.matches("\\d+")) {
+            return "error"; // renvoyer une page d'erreur si l'id n'est pas un nombre
+        }
+        Long personId = Long.parseLong(id);
+        Person person = personRepository.findById(personId).orElse(null);
         model.addAttribute("person", person);
         return "personDetail";
     }
+
 
 
     @GetMapping("/all")

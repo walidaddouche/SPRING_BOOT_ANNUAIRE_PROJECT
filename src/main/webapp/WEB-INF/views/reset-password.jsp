@@ -61,13 +61,17 @@
 
     </style>
 </head>
+
+<header>
+    <%@include file="navbar.jsp" %>
+
+</header>
 <body>
 <div class="container">
     <h2>Reset Password</h2>
     <form:form method="post" action="reset-password" modelAttribute="resetPasswordForm">
         <label for="email">Email:</label>
-        <form:input type="text" path="email" id="email" />
-
+        <form:input type="text" path="email" id="email"/>
 
         <div class="error">${errorMessage}</div>
 

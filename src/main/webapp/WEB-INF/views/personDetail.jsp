@@ -3,11 +3,14 @@
 <head>
     <title>Person Details</title>
     <style><%@include file="../css/persons.css"%></style>
-    <%@include file="navbar.jsp" %>
 
 
 </head>
 <body>
+<header>
+    <%@include file="navbar.jsp" %>
+
+</header>
 <h1>Person Details</h1>
 <table>
     <tr>

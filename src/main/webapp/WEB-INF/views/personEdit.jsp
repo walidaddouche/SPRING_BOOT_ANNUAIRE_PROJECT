@@ -7,9 +7,12 @@
 <h1>Edit Person</h1>
 <style>
     <%@include file="../css/personEdit.css" %>
+</style>
+
+<header>
     <%@include file="navbar.jsp" %>
 
-</style>
+</header>
 
 <form:form method="POST" modelAttribute="person" action="edit">
     <table>

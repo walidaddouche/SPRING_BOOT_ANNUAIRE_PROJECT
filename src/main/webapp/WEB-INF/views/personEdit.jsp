@@ -4,15 +4,16 @@
     <title>Edit Person</title>
 </head>
 <body>
+<header>
+    <%@include file="navbar.jsp" %>
+
+</header>
 <h1>Edit Person</h1>
 <style>
     <%@include file="../css/personEdit.css" %>
 </style>
 
-<header>
-    <%@include file="navbar.jsp" %>
 
-</header>
 
 <form:form method="POST" modelAttribute="person" action="edit">
     <table>

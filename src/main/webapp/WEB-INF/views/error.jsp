@@ -42,7 +42,7 @@
 </header>
 <body>
 <div class="container">
-    <h1>Erreur 403</h1>
+    <h1>Erreur 404</h1>
     <p>Page Introuvable.</p>
     <a href="/">Retour agi l'accueil</a>
 </div>

@@ -55,13 +55,6 @@ public class testFakesData {
             person.setGroup(groups.get(faker.random().nextInt(groups.size())));
             personRepository.save(person);
         }
-
-
-
-
-
-
-
     }
 
 
@@ -90,14 +83,6 @@ public class testFakesData {
         personRepository.save(person1);
 
 
-
-
-        System.out.println(person);
-
-
-        person.setEmail(person1.getEmail());
-
-        System.out.println(person);
 
 
     }

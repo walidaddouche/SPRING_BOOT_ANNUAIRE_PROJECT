@@ -6,16 +6,8 @@
 </head>
 <body>
 <header>
-    <h1>Annuaire</h1>
-    <nav>
-        <ul>
-            <li><a href="/persons/all">Personnes</a></li>
-            <li><a href="/groups/all">Groupes</a></li>
-            <li><a href="/persons/edit">Editer une personne</a></li>
-            <li><a href="/reset-password">Recuperer mot de pass</a></li>
+    <%@include file="navbar.jsp" %>
 
-        </ul>
-    </nav>
 </header>
 <main>
     <h2>Bienvenue dans notre annuaire</h2>

@@ -50,6 +50,10 @@
         }
     </style>
 </head>
+<header>
+    <%@include file="navbar.jsp" %>
+
+</header>
 <body>
 <div class="container">
     <h1>Erreur 403</h1>

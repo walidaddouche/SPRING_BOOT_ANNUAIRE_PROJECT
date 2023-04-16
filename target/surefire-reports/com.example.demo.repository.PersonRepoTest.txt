@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------
+Test set: com.example.demo.repository.PersonRepoTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 3.831 s <<< FAILURE! - in com.example.demo.repository.PersonRepoTest
+testFindByLastName  Time elapsed: 1.281 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: java.lang.IllegalStateException: Failed to execute CommandLineRunner
+Caused by: org.springframework.dao.DataIntegrityViolationException: 
+could not execute statement; SQL [n/a]; constraint ["PUBLIC.UK_FWMWI44U55BO4RVWSV0CLN012_INDEX_8 ON PUBLIC.PERSON(EMAIL NULLS FIRST) VALUES ( /* 278 */ 'roderick.parisian@gmail.com' )"; SQL statement:
+insert into person (id, date_of_birth, email, first_name, group_ref, last_name, password, website) values (default, ?, ?, ?, ?, ?, ?, ?) [23505-214]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: 
+Unique index or primary key violation: "PUBLIC.UK_FWMWI44U55BO4RVWSV0CLN012_INDEX_8 ON PUBLIC.PERSON(EMAIL NULLS FIRST) VALUES ( /* 278 */ 'roderick.parisian@gmail.com' )"; SQL statement:
+insert into person (id, date_of_birth, email, first_name, group_ref, last_name, password, website) values (default, ?, ?, ?, ?, ?, ?, ?) [23505-214]
+
+testDeleteByEmail  Time elapsed: 0.868 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: java.lang.IllegalStateException: Failed to execute CommandLineRunner
+Caused by: org.springframework.dao.DataIntegrityViolationException: 
+could not execute statement; SQL [n/a]; constraint ["PUBLIC.UK_FWMWI44U55BO4RVWSV0CLN012_INDEX_8 ON PUBLIC.PERSON(EMAIL NULLS FIRST) VALUES ( /* 95 */ 'cody.bosco@hotmail.com' )"; SQL statement:
+insert into person (id, date_of_birth, email, first_name, group_ref, last_name, password, website) values (default, ?, ?, ?, ?, ?, ?, ?) [23505-214]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: 
+Unique index or primary key violation: "PUBLIC.UK_FWMWI44U55BO4RVWSV0CLN012_INDEX_8 ON PUBLIC.PERSON(EMAIL NULLS FIRST) VALUES ( /* 95 */ 'cody.bosco@hotmail.com' )"; SQL statement:
+insert into person (id, date_of_birth, email, first_name, group_ref, last_name, password, website) values (default, ?, ?, ?, ?, ?, ?, ?) [23505-214]
+

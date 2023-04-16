@@ -1,0 +1,5 @@
+com/example/demo/model/PersonTest.class
+com/example/demo/repository/GroupRepoTest.class
+com/example/demo/model/GroupTest.class
+com/example/demo/testFakesData.class
+com/example/demo/repository/PersonRepoTest.class

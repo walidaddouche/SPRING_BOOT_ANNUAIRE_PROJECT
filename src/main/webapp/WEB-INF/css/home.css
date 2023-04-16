@@ -28,5 +28,22 @@ footer {
     width: 100%;
     text-align: center;
 }
+main {
+    position: relative;
+    min-height: calc(100vh - 200px); /* réduire la hauteur pour laisser de la place pour le footer */
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+.centered {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
 
 

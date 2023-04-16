@@ -24,11 +24,10 @@
     <tr>
         <td>${group.id}</td>
         <td>${group.name}</td>
-
     </tr>
     </tbody>
 </table>
-<h2>Members:</h2>
+<h2>Members</h2>
 <table>
     <thead>
     <tr>

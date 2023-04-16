@@ -44,7 +44,7 @@
 <div class="container">
     <h1>Erreur 404</h1>
     <p>Page Introuvable.</p>
-    <a href="/">Retour agi l'accueil</a>
+    <a href="/">Retour a l'accueil</a>
 </div>
 </body>
 </html>

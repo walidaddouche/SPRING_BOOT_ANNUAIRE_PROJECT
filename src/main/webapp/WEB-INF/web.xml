@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>personServlet</servlet-name>
-        <servlet-class>com.example.demo.controller.PersonController</servlet-class>
+        <servlet-class>com.app.controller.PersonController</servlet-class>
     </servlet>
 
     <servlet-mapping>

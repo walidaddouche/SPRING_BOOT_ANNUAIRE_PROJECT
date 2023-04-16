@@ -1,9 +1,4 @@
-
-  <head>
-    <meta charset="UTF-8">
-    <title>README</title>
-  </head>
-  <body>
+ <body>
     <h1>SPRING_BOOT_ANNUAIRE_PROJECT</h1>
     <p>SPRING_BOOT_ANNUAIRE_PROJECT est un projet Spring Boot conçu pour gérer un annuaire d'utilisateurs.</p>
     <h2>Installation</h2>
